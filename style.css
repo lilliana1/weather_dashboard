@@ -1,3 +1,21 @@
 h1 {
     text-align: center;
+    background-color: #55aadd;
+    color: white;
+    font-family: 'Lilita One', cursive;
+    padding: 20px;
+}
+
+.form {
+    border: 1px solid black;
+    
+}
+.input {
+    border: none;
+}
+.searchBtn {
+    background: transparent;
+    border: none;
+    
+    
 }
