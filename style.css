@@ -1,21 +1,26 @@
+* {
+    font-family: 'Lilita One', cursive;
+}
 h1 {
     text-align: center;
     background-color: #55aadd;
     color: white;
-    font-family: 'Lilita One', cursive;
     padding: 20px;
 }
-
-.form {
+.form-control {
     border: 1px solid black;
     
 }
 .input {
     border: none;
 }
-.searchBtn {
-    background: transparent;
-    border: none;
+#search-button {
+    border: 20px;
+    margin: 20px;
+    
+    box-sizing: border-box;
+    background-color: #55aadd;
+    color: white;
     
     
 }

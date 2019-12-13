@@ -16,31 +16,26 @@
 </head>
 <body>
     <header>
-     <h1> Weather Dashboard</h1>   
+        <h1> Weather Dashboard</h1>   
     </header>
     <!--container-->
     <div class="container">
         <div class="row">
-            <div class="col-md">
-            <h4>Search for city </h4>
-                <!-- Search form -->
-                <form class="form-inline md-form form-sm active-cyan-2 mt-2 form">
-                    <input class="form-control form-control-sm mr-3 w-75 input" type="text" placeholder="Search" aria-label="Search">
-                        <button class="material-icons searchBtn" style="font-size:30px">search</button>
-                </form>
-            </div>
-            <div class="col col-md city">
-            City: 
+            <!--search form-->
+            <aside class="col-lg-3-bg-light">
+                <h5 class="mt-1">Search for city:</h5>
+                <div class="form-inline form-group">
+                    <input class="form-control" type="text" placeholder="Search" aria-label="Search" id="search-value">
+                    <button class="btn btn-dark"  id="search-button" style="font-size:15px">search</button>
+                </div>
+            </aside>
+
+            <!--display city you selected-->
+            <div class="col-lg-8">
+                <div class="today"></div>
+                <div class="forecast"></div>
             </div>
         </div>
-        <div class="row">
-                <div class="col-md">
-                
-                </div>
-                <div class="col col-md forecast">
-                5 day Forecast
-                </div>
-            </div>
     </div>    
 
     <!--JS BOOTSTRAP-->
