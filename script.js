@@ -12,7 +12,7 @@ function currentWeather(searchValue) {
     console.log(searchValue);
     $.ajax({
         
-        url: "http://api.openweathermap.org/data/2.5/weather?q=" + searchValue + "&appid=8526bab28d6f75f024123eb744a72998",
+        url: "http://api.openweathermap.org/data/2.5/weather?q=" + searchValue + "&units=imperial&appid=8526bab28d6f75f024123eb744a72998",
         type: "GET",
     }).then(function(response){
 
