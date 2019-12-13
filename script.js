@@ -81,17 +81,29 @@ function forecast(searchValue) {
         
     })
 }
+// function that saves previous search
+function history(searchValue) {
+    for (let index = 0; index < searchValue.length; index++) {
+        $("#newBtn").html(searchValue);
+        
+    }
+}
 
 
 
 
-
-
+    //when the search is click on 
     $("#search-button").on("click", function () {
         // gets value of user 
         var searchValue = $("#search-value").val()
+        //creating new button of previous search
+        //  = $("<button>").click(searchValue))
+        // $("#search-button").click(function () {
+        // $("#newBtn").append(searchValue);
+        // });
 
         // search function 
+        history(searchValue);
         currentWeather(searchValue);
         getHumidity(searchValue);
         getWindSpeed(searchValue);
