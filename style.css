@@ -1,26 +1,40 @@
 * {
-    font-family: 'Lilita One', cursive;
+    font-family: 'Bebas Neue', cursive;
 }
 h1 {
     text-align: center;
-    background-color: #55aadd;
+    background-color: #212d60;
     color: white;
     padding: 20px;
+    
+}
+h2 {
+    border: 20px;
+    text-align: center;
+    color: black;
+    margin: 20px;
 }
 .form-control {
     border: 1px solid black;
-    
 }
 .input {
     border: none;
+ 
 }
 #search-button {
     border: 20px;
     margin: 20px;
-    
     box-sizing: border-box;
-    background-color: #55aadd;
+    background-color: #212d60;
     color: white;
-    
-    
+}
+#searchHeader {
+    padding: 20px;
+}
+.col-lg-8{
+    padding-right: 50px;
+    padding-left: 50px;
+}
+.forecast {
+    background-color: red;
 }

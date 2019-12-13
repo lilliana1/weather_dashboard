@@ -7,7 +7,7 @@
     <!--BOOTSTRAP-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!--GOOGLE FONTS-->
-    <link href="https://fonts.googleapis.com/css?family=Lilita+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Bebas+Neue|PT+Serif&display=swap" rel="stylesheet">
     <!--BOOTSTRAP ICONS-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> 
     <!--CSS STYLE-->
@@ -23,7 +23,7 @@
         <div class="row">
             <!--search form-->
             <aside class="col-lg-3-bg-light">
-                <h5 class="mt-1">Search for city:</h5>
+                <h5 class="mt-1" id="searchHeader">Search for city:</h5>
                 <div class="form-inline form-group">
                     <input class="form-control" type="text" placeholder="Search" aria-label="Search" id="search-value">
                     <button class="btn btn-dark"  id="search-button" style="font-size:15px">search</button>
@@ -33,8 +33,11 @@
             <!--display city you selected-->
             <div class="col-lg-8">
                 <div class="today"></div>
-                <div class="forecast"></div>
+                <div class="humidity"></div>
+                <div class="windSpeed"></div>
+                <!-- <div class="forecast"></div> -->
             </div>
+            <div class="forecast"></div>
         </div>
     </div>    
 
@@ -44,6 +47,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <!--JQUERY-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!--MOMENT JS-->
+    <script src="https://rawgit.com/moment/moment/2.2.1/min/moment.min.js"></script>
     <!--JS SCRIPT-->
     <script src="script.js"></script>
 </body>
