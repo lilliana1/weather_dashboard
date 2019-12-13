@@ -71,7 +71,7 @@ function getUV(lat, lon) {
 
 // get forecast for next 5 days
 function forecast(searchValue) {
-    $ajax({
+    $.ajax({
         url: "http://api.openweathermap.org/data/2.5/forecast?" + searchValue + "appid=8526bab28d6f75f024123eb744a72998",
         type: "GET"
     }).then(function(response){
@@ -82,20 +82,44 @@ function forecast(searchValue) {
     })
 }
 // function that saves previous search
-function history(searchValue) {
-    for (let index = 0; index < searchValue.length; index++) {
-        $("#newBtn").html(searchValue);
+function history() {
+    $(".historyButton").empty();
+    let localArray = JSON.parse(localStorage.getItem("searchHistory"));
+    console.log(localArray);
+    
+    if (localArray === null) {
+        localArray = [];
+    } 
+
+    for (let index = 0; index < localArray.length; index++) {
+
+        let newBtn = $("<button>").text(localArray[index]).addClass("historyBtn").attr("value",localArray[index]);
+        $(".historyButton").append(newBtn)
+        
         
     }
 }
 
+history()
 
-
+    $(document).on("click", ".historyBtn",function() {
+        let saveBtn = $(this).val();
+        console.log(saveBtn);
+        
+        
+        history();
+        currentWeather(saveBtn);
+        getHumidity(saveBtn);
+        getWindSpeed(saveBtn);
+        forecast(saveBtn);
+        getUV(response.coord.lat,response.coord.lon);
+    })
 
     //when the search is click on 
     $("#search-button").on("click", function () {
         // gets value of user 
-        var searchValue = $("#search-value").val()
+        var searchValue = $("#search-value").val();
+        
         //creating new button of previous search
         //  = $("<button>").click(searchValue))
         // $("#search-button").click(function () {
@@ -103,7 +127,9 @@ function history(searchValue) {
         // });
 
         // search function 
-        history(searchValue);
+        
+        saveLocal(searchValue)
+        history();
         currentWeather(searchValue);
         getHumidity(searchValue);
         getWindSpeed(searchValue);
@@ -112,6 +138,18 @@ function history(searchValue) {
         
     })
 })
+
+function saveLocal(search) {
+    
+    let localArray = JSON.parse(localStorage.getItem("searchHistory"));
+    if (localArray === null) {
+        localArray = [];
+    } 
+    console.log(localArray);
+    
+    localArray.push(search);
+    localStorage.setItem("searchHistory", JSON.stringify(localArray));
+}
 
 
 
