@@ -56,6 +56,24 @@ function getWindSpeed(searchValue) {
     })
 }
 
+// // grabs forecast data from api
+// function getForecast (searchValue){
+//     $.ajax({
+//         url: "http://api.openweathermap.org/data/2.5/forecast?q=" + searchValue + "&units=imperial&appid=" + "&appid=8526bab28d6f75f024123eb744a72998",
+//         method: 'GET'
+//     }).then(function(response){
+//         console.log(response);
+
+//         for (var i = 1; i <= response.list.length; i++){
+//             if(response.list[i].dt_txt.indexOf("15:00:00") !== -1){
+//                 $(".forecast").append("<p> It will be " + response.list[i].main.temp + " on " + response.list[i].dt_txt + "</p>");
+//                 console.log(response.list[i].main.temp)
+//                 console.log(response.list[i].dt_txt)
+  
+//         }
+//     }          
+//     })
+// }
 //get city UV
 function getUV(lat, lon) {
     $ajax({
@@ -113,6 +131,7 @@ history()
         getWindSpeed(saveBtn);
         forecast(saveBtn);
         getUV(response.coord.lat,response.coord.lon);
+        getForecast(searchValue);
     })
 
     //when the search is click on 
