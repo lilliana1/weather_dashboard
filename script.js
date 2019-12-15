@@ -14,10 +14,13 @@ function currentWeather(searchValue) {
         
         url: "http://api.openweathermap.org/data/2.5/weather?q=" + searchValue + "&units=imperial&appid=8526bab28d6f75f024123eb744a72998",
         type: "GET",
+        dataType: "json"
     }).then(function(response){
 
         console.log(response);
         $(".today").html("<h2>" + response.name + " " + day + " Weather Details" + "</h2>" +  "<p>Temperature " + response.main.temp + "</p>" )
+        getUV(response.coord.lat, response.coord.lon);
+        console.log(response.coord.lat, response.coord.lon);
         
     })
 }
@@ -57,32 +60,39 @@ function getWindSpeed(searchValue) {
 }
 
 // // grabs forecast data from api
-// function getForecast (searchValue){
-//     $.ajax({
-//         url: "http://api.openweathermap.org/data/2.5/forecast?q=" + searchValue + "&units=imperial&appid=" + "&appid=8526bab28d6f75f024123eb744a72998",
-//         method: 'GET'
-//     }).then(function(response){
-//         console.log(response);
+function getForecast (searchValue){
+     $.ajax({
+         url: "http://api.openweathermap.org/data/2.5/forecast?q=" + searchValue + "&units=imperial" + "&appid=3be2b2b6acc21e3760901d15acf91f72",
+         method: 'GET',
+        dataType: "json"
+    }).then(function(response){
+        console.log(response);
 
-//         for (var i = 1; i <= response.list.length; i++){
-//             if(response.list[i].dt_txt.indexOf("15:00:00") !== -1){
-//                 $(".forecast").append("<p> It will be " + response.list[i].main.temp + " on " + response.list[i].dt_txt + "</p>");
-//                 console.log(response.list[i].main.temp)
-//                 console.log(response.list[i].dt_txt)
+        for (var i = 1; i <= response.list.length; i++)
+        { 
+        console.log(response.list[i].dt_txt)
+        if(response.list[i].dt_txt.indexOf("15:00:00") !== -1){
+        $(".forecast").append("<p> It will be " + response.list[i].main.temp + " on " + response.list[i].dt_txt + "</p>");
+        console.log(response.list[i].main.temp)
+
+                
   
-//         }
-//     }          
-//     })
-// }
+        }
+    }          
+    })
+ }
+
+
 //get city UV
 function getUV(lat, lon) {
-    $ajax({
-        url: "http://api.openweathermap.org/data/2.5/uvi?" + "appid=8526bab28d6f75f024123eb744a72998" + "&lat=" + lat + "&lon=" + lon,
-        type: "GET"
+    $.ajax({
+        url: "http://api.openweathermap.org/data/2.5/uvi?"  + "&lat=" + lat + "&lon=" + lon + "&appid=8526bab28d6f75f024123eb744a72998",
+        type: "GET",
+        dataType: "json"
     }).then(function(response){
         console.log(response)
 
-        $(".uv").html("<p>uv" + response.value + "</p>");
+        $(".uv").html("<p>uv" + ": " + response.value + "</p>");
         
     })
 }
@@ -129,16 +139,18 @@ history()
         currentWeather(saveBtn);
         getHumidity(saveBtn);
         getWindSpeed(saveBtn);
-        forecast(saveBtn);
-        getUV(response.coord.lat,response.coord.lon);
-        getForecast(searchValue);
+        // forecast(saveBtn);
+        
+        getForecast(saveBtn);
     })
 
     //when the search is click on 
     $("#search-button").on("click", function () {
         // gets value of user 
         var searchValue = $("#search-value").val();
-        
+        if (searchValue === "" || searchValue === " ") {
+            alert("Empty Value is not searchable")
+        } 
         //creating new button of previous search
         //  = $("<button>").click(searchValue))
         // $("#search-button").click(function () {
@@ -146,14 +158,16 @@ history()
         // });
 
         // search function 
+        else {
+            saveLocal(searchValue)
+            history();
+            currentWeather(searchValue);
+            getHumidity(searchValue);
+            getWindSpeed(searchValue);
+            forecast(searchValue);
+            getUV(response.coord.lat,response.coord.lon);
+        }
         
-        saveLocal(searchValue)
-        history();
-        currentWeather(searchValue);
-        getHumidity(searchValue);
-        getWindSpeed(searchValue);
-        forecast(searchValue);
-        getUV(response.coord.lat,response.coord.lon);
         
     })
 })
