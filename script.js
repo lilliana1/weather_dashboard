@@ -5,8 +5,6 @@ var day  = moment().format('MMMM Do YYYY');
 $(document).ready(function(){
     
     
-    
-
 //get city temperature
 function currentWeather(searchValue) {
     console.log(searchValue);
@@ -24,17 +22,7 @@ function currentWeather(searchValue) {
         
     })
 }
-//get city forecast
-// function getForecast(searchValue) {
-//     $.ajax({
-//         url: "http://api.openweathermap.org/data/2.5/forecast?q=" + searchValue + "&appid=8526bab28d6f75f024123eb744a72998",
-//         type: "GET"
-//     }).then(function(response){
-//         console.log(response)
 
-//         $(".forecast").html("<p>Feels like " + response.list[0].main.feels_like + "</p>");
-//     })
-// }
 
 //get city humidity
 function getHumidity(searchValue) {
@@ -66,10 +54,9 @@ function getForecast (searchValue){
          method: 'GET',
         dataType: "json"
     }).then(function(response){
+        
         console.log(response);
-
-        for (var i = 1; i <= response.list.length; i++)
-        { 
+        for (var i = 1; i <= response.list.length; i++) { 
         console.log(response.list[i].dt_txt)
         if(response.list[i].dt_txt.indexOf("15:00:00") !== -1){
         $(".forecast").append("<p> It will be " + response.list[i].main.temp + " on " + response.list[i].dt_txt + "</p>");
@@ -139,7 +126,7 @@ history()
         currentWeather(saveBtn);
         getHumidity(saveBtn);
         getWindSpeed(saveBtn);
-        // forecast(saveBtn);
+        
         
         getForecast(saveBtn);
     })
@@ -151,11 +138,8 @@ history()
         if (searchValue === "" || searchValue === " ") {
             alert("Empty Value is not searchable")
         } 
-        //creating new button of previous search
-        //  = $("<button>").click(searchValue))
-        // $("#search-button").click(function () {
-        // $("#newBtn").append(searchValue);
-        // });
+      
+       
 
         // search function 
         else {
@@ -184,23 +168,3 @@ function saveLocal(search) {
     localStorage.setItem("searchHistory", JSON.stringify(localArray));
 }
 
-
-
-
-// searchOtherCity();
-// function searchOtherCity() {
-    
-//     {
-//         var str = localStorage.getItem("searchHistory");
-//         if (str !== null) $('#search-value').val(str);
-        
-        
-    
-//     };
-// }
-// // click save button to set textInput to local storage 
-// $(".saveBtn").on("click", function(event) {
-//   event.preventDefault();
-//   localStorage.setItem("searchHistory", $('#search-value').val());
-//   searchOtherCity();
-// });
