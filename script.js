@@ -10,7 +10,7 @@ function currentWeather(searchValue) {
     console.log(searchValue);
     $.ajax({
         
-        url: "http://api.openweathermap.org/data/2.5/weather?q=" + searchValue + "&units=imperial&appid=8526bab28d6f75f024123eb744a72998",
+        url: "https://api.openweathermap.org/data/2.5/weather?q=" + searchValue + "&units=imperial&appid=8526bab28d6f75f024123eb744a72998",
         type: "GET",
         dataType: "json"
     }).then(function(response){
@@ -27,7 +27,7 @@ function currentWeather(searchValue) {
 //get city humidity
 function getHumidity(searchValue) {
     $.ajax({
-        url: "http://api.openweathermap.org/data/2.5/weather?q=" + searchValue + "&appid=8526bab28d6f75f024123eb744a72998",
+        url: "https://api.openweathermap.org/data/2.5/weather?q=" + searchValue + "&appid=8526bab28d6f75f024123eb744a72998",
         type: "GET"
     }).then(function(response){
         console.log(response)
@@ -38,7 +38,7 @@ function getHumidity(searchValue) {
 //get city wind speed
 function getWindSpeed(searchValue) {
     $.ajax({
-        url: "http://api.openweathermap.org/data/2.5/weather?q=" + searchValue + "&appid=8526bab28d6f75f024123eb744a72998",
+        url: "https://api.openweathermap.org/data/2.5/weather?q=" + searchValue + "&appid=8526bab28d6f75f024123eb744a72998",
         type: "GET"
     }).then(function(response){
         console.log(response)
@@ -50,7 +50,7 @@ function getWindSpeed(searchValue) {
 // // grabs forecast data from api
 function getForecast (searchValue){
      $.ajax({
-         url: "http://api.openweathermap.org/data/2.5/forecast?q=" + searchValue + "&units=imperial" + "&appid=3be2b2b6acc21e3760901d15acf91f72",
+         url: "https://api.openweathermap.org/data/2.5/forecast?q=" + searchValue + "&units=imperial" + "&appid=3be2b2b6acc21e3760901d15acf91f72",
          method: 'GET',
         dataType: "json"
     }).then(function(response){
@@ -73,7 +73,7 @@ function getForecast (searchValue){
 //get city UV
 function getUV(lat, lon) {
     $.ajax({
-        url: "http://api.openweathermap.org/data/2.5/uvi?"  + "&lat=" + lat + "&lon=" + lon + "&appid=8526bab28d6f75f024123eb744a72998",
+        url: "https://api.openweathermap.org/data/2.5/uvi?"  + "&lat=" + lat + "&lon=" + lon + "&appid=8526bab28d6f75f024123eb744a72998",
         type: "GET",
         dataType: "json"
     }).then(function(response){
@@ -87,7 +87,7 @@ function getUV(lat, lon) {
 // get forecast for next 5 days
 function forecast(searchValue) {
     $.ajax({
-        url: "http://api.openweathermap.org/data/2.5/forecast?" + searchValue + "appid=8526bab28d6f75f024123eb744a72998",
+        url: "https://api.openweathermap.org/data/2.5/forecast?" + searchValue + "appid=8526bab28d6f75f024123eb744a72998",
         type: "GET"
     }).then(function(response){
         console.log(response);
