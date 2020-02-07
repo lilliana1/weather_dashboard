@@ -54,12 +54,12 @@ function getForecast (searchValue){
          method: 'GET',
         dataType: "json"
     }).then(function(response){
-        
+        $(".forecast").empty()
         console.log(response);
         for (var i = 1; i <= response.list.length; i++) { 
         console.log(response.list[i].dt_txt)
         if(response.list[i].dt_txt.indexOf("15:00:00") !== -1){
-        $(".forecast").append("<p> It will be " + response.list[i].main.temp + " on " + response.list[i].dt_txt + "</p>");
+        $(".forecast").append("<div class='col-2 forecastCard'><img src='https://openweathermap.org/img/wn/"+ response.list[i].weather[0].icon+".png'><p>"+ moment(response.list[i].dt_txt).format("MM/DD/YY") + "</p><p> Temp: " + response.list[i].main.temp + "</p></div>");
         console.log(response.list[i].main.temp)
 
                 
@@ -86,11 +86,12 @@ function getUV(lat, lon) {
 
 // get forecast for next 5 days
 function forecast(searchValue) {
+
     $.ajax({
         url: "https://api.openweathermap.org/data/2.5/forecast?" + searchValue + "appid=8526bab28d6f75f024123eb744a72998",
         type: "GET"
     }).then(function(response){
-        console.log(response);
+        console.log("forecast", response);
 
         $(".forecast").html(response.forecast);
         
