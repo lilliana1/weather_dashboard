@@ -49,5 +49,7 @@ h2 {
     color: white;
     /* width: 20%; */
     margin: 10px;
-
+}
+.bg-light {
+    background-color: white;
 }

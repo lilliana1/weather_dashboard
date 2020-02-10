@@ -144,7 +144,7 @@ history()
 
         // search function 
         else {
-            saveLocal(searchValue)
+            saveLocal(searchValue);
             history();
             currentWeather(searchValue);
             getHumidity(searchValue);
